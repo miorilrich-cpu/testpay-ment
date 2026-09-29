@@ -164,8 +164,8 @@ body {
 
 .logo-note {
     position: absolute;
-    right: -5px;
-    top: 2px;
+    right: -10px;
+    bottom: 2px; /* แก้ไขตำแหน่งจากด้านบนมาอยู่ด้านล่างข้างๆ โลโก้ตามเงื่อนไข */
 
     width: 34px;
     height: 34px;
@@ -511,14 +511,17 @@ body {
 }
 
 /* =========================
-   QR
+   QR (ย้ายมาไว้ข้างบนตรงกลางในกรอบช่องทางการโอนธนาคาร)
 ========================= */
 
-.qr-content {
+.qr-top-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
+    text-align: center;
     margin-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f2e0e4;
 }
 
 .qr-image {
@@ -535,18 +538,15 @@ body {
     background: white;
 }
 
-.qr-info {
-    flex: 1;
-}
-
 .qr-info-title {
+    margin-top: 10px;
     font-size: 13px;
     color: #7d5a63;
     line-height: 1.7;
 }
 
 .qr-info-text {
-    margin-top: 6px;
+    margin-top: 4px;
     font-size: 10px;
     line-height: 1.7;
     color: #b0939a;
@@ -606,10 +606,6 @@ body {
 
     .payment-title {
         font-size: 23px;
-    }
-
-    .qr-content {
-        gap: 10px;
     }
 
     .qr-image {
@@ -783,7 +779,7 @@ body {
     </div>
 
 
-    <!-- ================= BANK ================= -->
+    <!-- ================= BANK (รวม QR Code และ Wallet ไว้ในกรอบเดียวกัน) ================= -->
 
     <div class="payment-card">
 
@@ -792,13 +788,28 @@ body {
             🏦
 
             <span>
-                ช่องทางธนาคาร
+                ช่องทางธนาคารและวอเล็ท
             </span>
 
             <span class="heart">
                 ♥
             </span>
 
+        </div>
+
+        <!-- QR Code ไว้ข้างบนตรงกลางตามเงื่อนไข -->
+        <div class="qr-top-container">
+            <img
+                class="qr-image"
+                src="https://placehold.co/400x400/ffffff/555555?text=QR+CODE"
+                alt="PromptPay QR Code"
+            >
+            <div class="qr-info-title">
+                สแกน QR Code เพื่อชำระเงิน
+            </div>
+            <div class="qr-info-text">
+                ตรวจสอบชื่อบัญชีก่อนยืนยันการโอนทุกครั้งนะครับ ♡
+            </div>
         </div>
 
 
@@ -868,50 +879,68 @@ body {
 
         </div>
 
-    </div>
 
+        <!-- เพิ่มส่วน วอเล็ท เข้าไปอยู่ในกรอบเดียวกันตามเงื่อนไข -->
+        <div class="bank-brand" style="margin-top: 20px;">
 
-    <!-- ================= PROMPTPAY ================= -->
+            <div class="bank-icon" style="background: #eef3ff;">
+                👛
+            </div>
 
-    <div class="payment-card">
+            <div>
 
-        <div class="card-title">
+                <div class="bank-name">
+                    TrueMoney Wallet
+                </div>
 
-            💚
+                <span class="bank-code">
+                    Wallet
+                </span>
 
-            <span>
-                พร้อมเพย์
-            </span>
-
-            <span class="heart">
-                ♥
-            </span>
+            </div>
 
         </div>
 
 
-        <div class="qr-content">
+        <div class="account-box">
 
-            <!-- เปลี่ยน QR Code ตรงนี้ -->
+            <div class="account-row">
 
-            <img
-                class="qr-image"
-                src="https://placehold.co/400x400/ffffff/555555?text=QR+CODE"
-                alt="PromptPay QR Code"
-            >
+                <span class="account-label">
+                    ชื่อบัญชี
+                </span>
 
+                <span class="account-value">
+                    นางสาว XXXXX XXXXX
+                </span>
 
-            <div class="qr-info">
-
-                <div class="qr-info-title">
-                    สแกน QR Code
-                    <br>
-                    เพื่อชำระเงิน
-                </div>
+            </div>
 
 
-                <div class="qr-info-text">
-                    ตรวจสอบชื่อบัญชีก่อนยืนยันการโอนทุกครั้งนะครับ ♡
+            <div class="account-row">
+
+                <span class="account-label">
+                    เบอร์วอเล็ท
+                </span>
+
+
+                <div class="account-number-row">
+
+                    <span
+                        id="walletNumber"
+                        class="account-value"
+                    >
+                        089-XXX-XXXX
+                    </span>
+
+
+                    <button
+                        class="copy-button"
+                        onclick="copyWallet()"
+                    >
+                        ⧉ คัดลอก
+                    </button>
+
                 </div>
 
             </div>
@@ -1030,8 +1059,25 @@ function copyAccount() {
 
 }
 
+/* ฟังก์ชันเสริมสำหรับวอเล็ท */
+function copyWallet() {
+    const wallet = document.getElementById("walletNumber").innerText.trim();
+    navigator.clipboard.writeText(wallet)
+        .then(() => {
+            const buttons = document.querySelectorAll(".copy-button");
+            const button = buttons[1] || buttons[0];
+            const original = button.innerText;
+            button.innerText = "คัดลอกแล้ว ✓";
+            setTimeout(() => {
+                button.innerText = original;
+            }, 1600);
+        })
+        .catch(() => {
+            alert("ไม่สามารถคัดลอกได้ กรุณาคัดลอกด้วยตนเองครับ");
+        });
+}
+
 </script>
 
 </body>
 </html>
-
