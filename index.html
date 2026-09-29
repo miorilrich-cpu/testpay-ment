@@ -400,7 +400,7 @@ body {
 .card-title {
     display: flex;
     align-items: center;
-    justify-content: center; /* จัดให้อยู่ตรงกลางตามต้องการ */
+    justify-content: center;
     gap: 8px;
 
     color: #815762;
@@ -809,8 +809,81 @@ body {
         </div>
 
 
+        <!-- โน๊ตสลิปก่อนโอนเงิน (วางไว้ก่อนช่องทางโอน) -->
+        <div class="bank-brand" style="margin-top: 20px;">
+
+            <div class="bank-icon" style="background: #fff8e6;">
+                📝
+            </div>
+
+            <div>
+
+                <div class="bank-name">
+                    โน๊ตสลิปก่อนโอนเงิน
+                </div>
+
+                <span class="bank-code">
+                    Note for Slip (ลืมโน๊ตโอนเพิ่ม 10.-)
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="account-box">
+
+            <div class="account-row">
+
+                <span class="account-label">
+                    ข้อความโน๊ต
+                </span>
+
+                <span class="account-value">
+                    โอนเงินให้ยัยมิ
+                </span>
+
+            </div>
+
+
+            <div class="account-row">
+
+                <span class="account-label">
+                    คัดลอกข้อความ
+                </span>
+
+
+                <div class="account-number-row">
+
+                    <span
+                        id="noteText"
+                        class="account-value"
+                    >
+                        โอนเงินให้ยัยมิ
+                    </span>
+
+
+                    <button
+                        class="copy-button"
+                        onclick="copyNote()"
+                    >
+                        ⧉ คัดลอก
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- โน๊ตเล็กๆ ด้านล่าง -->
+            <div style="margin-top: 8px; text-align: right; font-size: 10px; color: #d98fa2;">
+                (ลืมโน๊ตโอนเพิ่ม 10.-)
+            </div>
+
+        </div>
+
+
         <!-- ส่วนธนาคารกสิกรไทย -->
-        <div class="bank-brand">
+        <div class="bank-brand" style="margin-top: 20px;">
 
             <div class="bank-icon">
                 🏦
@@ -944,142 +1017,6 @@ body {
 
         </div>
 
-
-        <!-- เพิ่มช่อง: โอนเงินให้ยัยมิ -->
-        <div class="bank-brand" style="margin-top: 20px;">
-
-            <div class="bank-icon" style="background: #fff0f3;">
-                🎀
-            </div>
-
-            <div>
-
-                <div class="bank-name">
-                    โอนเงินให้ยัยมิ
-                </div>
-
-                <span class="bank-code">
-                    Miori Special Account
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="account-box">
-
-            <div class="account-row">
-
-                <span class="account-label">
-                    ชื่อบัญชี
-                </span>
-
-                <span class="account-value">
-                    นางสาว XXXXX XXXXX
-                </span>
-
-            </div>
-
-
-            <div class="account-row">
-
-                <span class="account-label">
-                    เลขบัญชี / พร้อมเพย์
-                </span>
-
-
-                <div class="account-number-row">
-
-                    <span
-                        id="mioriNumber"
-                        class="account-value"
-                    >
-                        123-4-56789-0
-                    </span>
-
-
-                    <button
-                        class="copy-button"
-                        onclick="copyMiori()"
-                    >
-                        ⧉ คัดลอก
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- เพิ่มช่อง: โน๊ตสลิป (มีข้อความเล็กๆ ลืมโอน +10.-) -->
-        <div class="bank-brand" style="margin-top: 20px;">
-
-            <div class="bank-icon" style="background: #fff8e6;">
-                📝
-            </div>
-
-            <div>
-
-                <div class="bank-name">
-                    โน๊ตสลิป <span style="font-size: 10px; color: #d98fa2; font-weight: normal;">(ลืมโอน +10.-)</span>
-                </div>
-
-                <span class="bank-code">
-                    Note for Slip
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="account-box">
-
-            <div class="account-row">
-
-                <span class="account-label">
-                    ข้อความโน๊ต
-                </span>
-
-                <span class="account-value">
-                    ค่าบริการรอบด่วน / ลืมโอน
-                </span>
-
-            </div>
-
-
-            <div class="account-row">
-
-                <span class="account-label">
-                    รายละเอียด
-                </span>
-
-
-                <div class="account-number-row">
-
-                    <span
-                        id="noteText"
-                        class="account-value"
-                    >
-                        ลืมโอน +10.-
-                    </span>
-
-
-                    <button
-                        class="copy-button"
-                        onclick="copyNote()"
-                    >
-                        ⧉ คัดลอก
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
     </div>
 
 
@@ -1154,10 +1091,20 @@ function showHome() {
    คัดลอกข้อมูล
 ================================================== */
 
+function copyNote() {
+    const note = document.getElementById("noteText").innerText.trim();
+    navigator.clipboard.writeText(note).then(() => {
+        const button = document.querySelectorAll(".copy-button")[0];
+        const original = button.innerText;
+        button.innerText = "คัดลอกแล้ว ✓";
+        setTimeout(() => { button.innerText = original; }, 1600);
+    }).catch(() => { alert("ไม่สามารถคัดลอกได้"); });
+}
+
 function copyAccount() {
     const account = document.getElementById("accountNumber").innerText.trim();
     navigator.clipboard.writeText(account).then(() => {
-        const button = document.querySelectorAll(".copy-button")[0];
+        const button = document.querySelectorAll(".copy-button")[1];
         const original = button.innerText;
         button.innerText = "คัดลอกแล้ว ✓";
         setTimeout(() => { button.innerText = original; }, 1600);
@@ -1167,27 +1114,7 @@ function copyAccount() {
 function copyWallet() {
     const wallet = document.getElementById("walletNumber").innerText.trim();
     navigator.clipboard.writeText(wallet).then(() => {
-        const button = document.querySelectorAll(".copy-button")[1];
-        const original = button.innerText;
-        button.innerText = "คัดลอกแล้ว ✓";
-        setTimeout(() => { button.innerText = original; }, 1600);
-    }).catch(() => { alert("ไม่สามารถคัดลอกได้"); });
-}
-
-function copyMiori() {
-    const miori = document.getElementById("mioriNumber").innerText.trim();
-    navigator.clipboard.writeText(miori).then(() => {
         const button = document.querySelectorAll(".copy-button")[2];
-        const original = button.innerText;
-        button.innerText = "คัดลอกแล้ว ✓";
-        setTimeout(() => { button.innerText = original; }, 1600);
-    }).catch(() => { alert("ไม่สามารถคัดลอกได้"); });
-}
-
-function copyNote() {
-    const note = document.getElementById("noteText").innerText.trim();
-    navigator.clipboard.writeText(note).then(() => {
-        const button = document.querySelectorAll(".copy-button")[3];
         const original = button.innerText;
         button.innerText = "คัดลอกแล้ว ✓";
         setTimeout(() => { button.innerText = original; }, 1600);
