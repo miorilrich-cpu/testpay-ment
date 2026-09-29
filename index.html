@@ -164,8 +164,8 @@ body {
 
 .logo-note {
     position: absolute;
-    right: 4px;   /* ปรับให้เขยิบเข้ามาด้านในโลโก้มากขึ้น */
-    bottom: 4px;  /* ปรับให้เขยิบขึ้นมาด้านบนเล็กน้อยเพื่อความกลมกลืน */
+    right: 4px;
+    bottom: 4px;
 
     width: 32px;
     height: 32px;
@@ -400,12 +400,13 @@ body {
 .card-title {
     display: flex;
     align-items: center;
+    justify-content: center; /* จัดให้อยู่ตรงกลางตามต้องการ */
     gap: 8px;
 
     color: #815762;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 600;
-    font-family: 'Playfair Display', serif; /* ใช้ฟอนต์ภาษาอังกฤษสวยๆ */
+    font-family: 'Playfair Display', serif;
     letter-spacing: 0.5px;
 
     padding-bottom: 12px;
@@ -514,7 +515,7 @@ body {
 }
 
 /* =========================
-   QR (ย้ายมาไว้ข้างบนตรงกลางในกรอบ Scan Here)
+   QR
 ========================= */
 
 .qr-top-container {
@@ -782,25 +783,17 @@ body {
     </div>
 
 
-    <!-- ================= SCAN HERE (เปลี่ยนชื่อและรวมทุกช่องทางไว้ในกรอบเดียวกัน) ================= -->
+    <!-- ================= SCAN HERE ================= -->
 
     <div class="payment-card">
 
         <div class="card-title">
-
-            ✨
-
-            <span>
-                Scan Here
-            </span>
-
-            <span class="heart">
-                ♥
-            </span>
-
+            <span class="heart">♥</span>
+            <span>Scan Here</span>
+            <span class="heart">♥</span>
         </div>
 
-        <!-- QR Code ไว้ข้างบนตรงกลางตามเงื่อนไข -->
+        <!-- QR Code ไว้ข้างบนตรงกลาง -->
         <div class="qr-top-container">
             <img
                 class="qr-image"
@@ -816,6 +809,7 @@ body {
         </div>
 
 
+        <!-- ส่วนธนาคารกสิกรไทย -->
         <div class="bank-brand">
 
             <div class="bank-icon">
@@ -883,7 +877,7 @@ body {
         </div>
 
 
-        <!-- ส่วนวอเล็ทในกรอบเดียวกัน -->
+        <!-- ส่วนวอเล็ท -->
         <div class="bank-brand" style="margin-top: 20px;">
 
             <div class="bank-icon" style="background: #eef3ff;">
@@ -940,6 +934,142 @@ body {
                     <button
                         class="copy-button"
                         onclick="copyWallet()"
+                    >
+                        ⧉ คัดลอก
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- เพิ่มช่อง: โอนเงินให้ยัยมิ -->
+        <div class="bank-brand" style="margin-top: 20px;">
+
+            <div class="bank-icon" style="background: #fff0f3;">
+                🎀
+            </div>
+
+            <div>
+
+                <div class="bank-name">
+                    โอนเงินให้ยัยมิ
+                </div>
+
+                <span class="bank-code">
+                    Miori Special Account
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="account-box">
+
+            <div class="account-row">
+
+                <span class="account-label">
+                    ชื่อบัญชี
+                </span>
+
+                <span class="account-value">
+                    นางสาว XXXXX XXXXX
+                </span>
+
+            </div>
+
+
+            <div class="account-row">
+
+                <span class="account-label">
+                    เลขบัญชี / พร้อมเพย์
+                </span>
+
+
+                <div class="account-number-row">
+
+                    <span
+                        id="mioriNumber"
+                        class="account-value"
+                    >
+                        123-4-56789-0
+                    </span>
+
+
+                    <button
+                        class="copy-button"
+                        onclick="copyMiori()"
+                    >
+                        ⧉ คัดลอก
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- เพิ่มช่อง: โน๊ตสลิป (มีข้อความเล็กๆ ลืมโอน +10.-) -->
+        <div class="bank-brand" style="margin-top: 20px;">
+
+            <div class="bank-icon" style="background: #fff8e6;">
+                📝
+            </div>
+
+            <div>
+
+                <div class="bank-name">
+                    โน๊ตสลิป <span style="font-size: 10px; color: #d98fa2; font-weight: normal;">(ลืมโอน +10.-)</span>
+                </div>
+
+                <span class="bank-code">
+                    Note for Slip
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="account-box">
+
+            <div class="account-row">
+
+                <span class="account-label">
+                    ข้อความโน๊ต
+                </span>
+
+                <span class="account-value">
+                    ค่าบริการรอบด่วน / ลืมโอน
+                </span>
+
+            </div>
+
+
+            <div class="account-row">
+
+                <span class="account-label">
+                    รายละเอียด
+                </span>
+
+
+                <div class="account-number-row">
+
+                    <span
+                        id="noteText"
+                        class="account-value"
+                    >
+                        ลืมโอน +10.-
+                    </span>
+
+
+                    <button
+                        class="copy-button"
+                        onclick="copyNote()"
                     >
                         ⧉ คัดลอก
                     </button>
@@ -1021,63 +1151,47 @@ function showHome() {
 
 
 /* ==================================================
-   คัดลอกเลขบัญชี
+   คัดลอกข้อมูล
 ================================================== */
 
 function copyAccount() {
-
-    const account =
-        document
-        .getElementById("accountNumber")
-        .innerText
-        .trim();
-
-
-    navigator.clipboard.writeText(account)
-        .then(() => {
-
-            const button =
-                document.querySelector(".copy-button");
-
-            const original =
-                button.innerText;
-
-            button.innerText =
-                "คัดลอกแล้ว ✓";
-
-
-            setTimeout(() => {
-
-                button.innerText =
-                    original;
-
-            }, 1600);
-
-        })
-        .catch(() => {
-
-            alert("ไม่สามารถคัดลอกได้ กรุณาคัดลอกเลขบัญชีด้วยตนเองครับ");
-
-        });
-
+    const account = document.getElementById("accountNumber").innerText.trim();
+    navigator.clipboard.writeText(account).then(() => {
+        const button = document.querySelectorAll(".copy-button")[0];
+        const original = button.innerText;
+        button.innerText = "คัดลอกแล้ว ✓";
+        setTimeout(() => { button.innerText = original; }, 1600);
+    }).catch(() => { alert("ไม่สามารถคัดลอกได้"); });
 }
 
-/* ฟังก์ชันเสริมสำหรับวอเล็ท */
 function copyWallet() {
     const wallet = document.getElementById("walletNumber").innerText.trim();
-    navigator.clipboard.writeText(wallet)
-        .then(() => {
-            const buttons = document.querySelectorAll(".copy-button");
-            const button = buttons[1] || buttons[0];
-            const original = button.innerText;
-            button.innerText = "คัดลอกแล้ว ✓";
-            setTimeout(() => {
-                button.innerText = original;
-            }, 1600);
-        })
-        .catch(() => {
-            alert("ไม่สามารถคัดลอกได้ กรุณาคัดลอกด้วยตนเองครับ");
-        });
+    navigator.clipboard.writeText(wallet).then(() => {
+        const button = document.querySelectorAll(".copy-button")[1];
+        const original = button.innerText;
+        button.innerText = "คัดลอกแล้ว ✓";
+        setTimeout(() => { button.innerText = original; }, 1600);
+    }).catch(() => { alert("ไม่สามารถคัดลอกได้"); });
+}
+
+function copyMiori() {
+    const miori = document.getElementById("mioriNumber").innerText.trim();
+    navigator.clipboard.writeText(miori).then(() => {
+        const button = document.querySelectorAll(".copy-button")[2];
+        const original = button.innerText;
+        button.innerText = "คัดลอกแล้ว ✓";
+        setTimeout(() => { button.innerText = original; }, 1600);
+    }).catch(() => { alert("ไม่สามารถคัดลอกได้"); });
+}
+
+function copyNote() {
+    const note = document.getElementById("noteText").innerText.trim();
+    navigator.clipboard.writeText(note).then(() => {
+        const button = document.querySelectorAll(".copy-button")[3];
+        const original = button.innerText;
+        button.innerText = "คัดลอกแล้ว ✓";
+        setTimeout(() => { button.innerText = original; }, 1600);
+    }).catch(() => { alert("ไม่สามารถคัดลอกได้"); });
 }
 
 </script>
