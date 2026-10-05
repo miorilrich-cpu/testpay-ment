@@ -7,7 +7,7 @@
 <title>Miori Shop 🎀</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Sarabun:wght@300;400;500;600&display=swap');
 
 * {
     box-sizing: border-box;
@@ -32,7 +32,7 @@ html {
 
 body {
     min-height: 100vh;
-    font-family: 'Mitr', sans-serif;
+    font-family: 'Sarabun', sans-serif;
     background:
         radial-gradient(circle at 10% 10%, #ffe3ea 0 3px, transparent 4px),
         radial-gradient(circle at 90% 25%, #f9d8e0 0 2px, transparent 3px),
@@ -187,9 +187,11 @@ body {
 
 .shop-name {
     margin-top: 13px;
-    font-size: 27px;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
     line-height: 1.25;
     font-weight: 600;
+    letter-spacing: 0.5px;
     color: #794f59;
 }
 
@@ -200,7 +202,7 @@ body {
 .shop-desc {
     margin: 7px auto 0;
     max-width: 330px;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.8;
     color: var(--muted);
 }
@@ -253,9 +255,10 @@ body {
 
     color: white;
 
-    font-family: inherit;
-    font-size: 16px;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 15px;
     font-weight: 500;
+    letter-spacing: 0.5px;
 
     cursor: pointer;
 
@@ -278,6 +281,8 @@ body {
 
 .enter-button .arrow {
     float: right;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
 }
 
 /* =========================
@@ -308,12 +313,12 @@ body {
 }
 
 .feature-icon {
-    font-size: 23px;
+    font-size: 20px;
     margin-bottom: 4px;
 }
 
 .feature-title {
-    font-size: 11px;
+    font-size: 12px;
     color: #8c6870;
     line-height: 1.6;
 }
@@ -329,12 +334,14 @@ body {
 
 .thank-title {
     color: #d7899d;
-    font-size: 18px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    letter-spacing: 0.5px;
 }
 
 .thank-text {
     color: #b79ca3;
-    font-size: 10px;
+    font-size: 11px;
     margin-top: 3px;
 }
 
@@ -363,7 +370,7 @@ body {
     background: transparent;
 
     color: #9c717b;
-    font-family: inherit;
+    font-family: 'Sarabun', sans-serif;
     font-size: 13px;
 
     cursor: pointer;
@@ -371,14 +378,16 @@ body {
 
 .payment-title {
     color: #774e58;
-    font-size: 26px;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
     font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .payment-subtitle {
     margin-top: 5px;
     color: #a88c93;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.7;
 }
 
@@ -404,10 +413,10 @@ body {
     gap: 8px;
 
     color: #815762;
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 600;
     font-family: 'Playfair Display', serif;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
 
     padding-bottom: 12px;
     border-bottom: 1px solid #f2e0e4;
@@ -415,7 +424,8 @@ body {
 
 .card-title .heart {
     color: #df8da2;
-    font-family: 'Mitr', sans-serif;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 14px;
 }
 
 /* Bank logo */
@@ -456,7 +466,9 @@ body {
     display: block;
     margin-top: 2px;
     color: #b1959b;
-    font-size: 11px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.5px;
 }
 
 /* Account */
@@ -483,13 +495,21 @@ body {
 
 .account-label {
     color: #b08f97;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .account-value {
     color: #76565f;
-    font-size: 13px;
+    font-size: 14px;
     text-align: right;
+}
+
+/* เลขบัญชีและเบอร์วอเล็ทใช้ฟอนต์ Cormorant Garamond ให้ดูหรูหราพรีเมียมขึ้น */
+#accountNumber, #walletNumber {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-weight: 600;
 }
 
 .account-number-row {
@@ -508,8 +528,8 @@ body {
     border-radius: 10px;
     padding: 6px 10px;
 
-    font-family: inherit;
-    font-size: 10px;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 11px;
 
     cursor: pointer;
 }
@@ -555,7 +575,7 @@ body {
 
 .qr-info-text {
     margin-top: 4px;
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.7;
     color: #b0939a;
 }
@@ -576,7 +596,7 @@ body {
 
     color: #9b747d;
 
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.9;
 }
 
@@ -589,7 +609,9 @@ body {
     margin-top: 24px;
 
     color: #c19fa7;
-    font-size: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
 }
 
 /* =========================
@@ -609,11 +631,11 @@ body {
     }
 
     .shop-name {
-        font-size: 24px;
+        font-size: 26px;
     }
 
     .payment-title {
-        font-size: 23px;
+        font-size: 25px;
     }
 
     .qr-image {
@@ -949,7 +971,7 @@ body {
         </div>
 
 
-        <!-- โน๊ตสลิปก่อนโอนเงิน (ย้ายมาไว้ข้างล่างวอเลท) -->
+        <!-- โน๊ตสลิปก่อนโอนเงิน -->
         <div class="bank-brand" style="margin-top: 20px;">
 
             <div class="bank-icon" style="background: #fff8e6;">
@@ -1015,7 +1037,7 @@ body {
             </div>
 
             <!-- โน๊ตเล็กๆ ด้านล่าง -->
-            <div style="margin-top: 8px; text-align: right; font-size: 10px; color: #d98fa2;">
+            <div style="margin-top: 8px; text-align: right; font-size: 11px; color: #d98fa2;">
                 (ลืมโน๊ตโอนเพิ่ม 10.-)
             </div>
 
@@ -1129,3 +1151,4 @@ function copyNote() {
 
 </body>
 </html>
+
